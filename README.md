@@ -1,7 +1,38 @@
 # Credit Risk Lab — Explainable Credit Risk Scoring (Educational Project)
 
 > **Status:** reproducible learning prototype; **not** approved for real lending or credit decisions. Based on historical German Credit data (1994), not a contemporary Moroccan or international banking sample.
-## Project Visualizations
+
+## Business question
+
+Can we distinguish historical *bad credit risk* from *good credit risk*, estimate probabilities responsibly, and explain the model's predictions? We compare a statistical baseline (logistic regression) against a Random Forest, each probability-calibrated using training-only cross-validation, then select a model and a decision threshold **using validation data only**.
+
+**Target variable definition:** The original German
+Credit dataset labels credit records as good risk (1)
+or bad risk (2). For binary classification, these
+labels are mapped to 0 (good risk) and 1 (bad risk).
+The model estimates the probability of belonging
+to the historical bad-credit-risk class, not a
+validated probability of default for contemporary
+banking populations.
+
+
+## Verified results from the original run
+
+| Item | Result |
+|---|---:|
+| Dataset | 1,000 historical records / 20 explanatory variables |
+| Split, stratified with `random_state=42` | 600 train / 200 validation / 200 test |
+| Selected model (validation cost) | Calibrated Random Forest |
+| Selected threshold (validation) | 0.26 |
+| Validation ROC-AUC, selected model | 0.8132 |
+| Test ROC-AUC | **0.7779** |
+| Stratified bootstrap percentile 95% CI (test, 2,000 draws) | **[0.7111, 0.8426]** |
+| Test PR-AUC | 0.6091 |
+| Test Brier score | 0.1676 |
+| Test recall of bad risk | 47/60 = 78.3% |
+| Test specificity for good risk | 91/140 = 65.0% |
+
+Illustrative costs: false negative (missed bad risk) = 5 units, false positive = 1 unit. These are **not real monetary losses**. Small validation differences (85 vs 89 cost units) should not be overinterpreted. Scores can vary with the split and sample. Never retune a model based on the final test results.
 
 ### ROC Curve — Independent Test Set
 
@@ -22,28 +53,6 @@ stronger average contribution to model predictions,
 without indicating whether a variable increases or
 decreases predicted risk. SHAP explanations describe
 model behavior, not causal relationships.
-
-## Business question
-
-Can we distinguish historical *bad credit risk* from *good credit risk*, estimate probabilities responsibly, and explain the model's predictions? We compare a statistical baseline (logistic regression) against a Random Forest, each probability-calibrated using training-only cross-validation, then select a model and a decision threshold **using validation data only**.
-
-## Verified results from the original run
-
-| Item | Result |
-|---|---:|
-| Dataset | 1,000 historical records / 20 explanatory variables |
-| Split, stratified with `random_state=42` | 600 train / 200 validation / 200 test |
-| Selected model (validation cost) | Calibrated Random Forest |
-| Selected threshold (validation) | 0.26 |
-| Validation ROC-AUC, selected model | 0.8132 |
-| Test ROC-AUC | **0.7779** |
-| Stratified bootstrap percentile 95% CI (test, 2,000 draws) | **[0.7111, 0.8426]** |
-| Test PR-AUC | 0.6091 |
-| Test Brier score | 0.1676 |
-| Test recall of bad risk | 47/60 = 78.3% |
-| Test specificity for good risk | 91/140 = 65.0% |
-
-Illustrative costs: false negative (missed bad risk) = 5 units, false positive = 1 unit. These are **not real monetary losses**. Small validation differences (85 vs 89 cost units) should not be overinterpreted. Scores can vary with the split and sample. Never retune a model based on the final test results.
 
 ## Install & reproduce (macOS / Linux)
 
@@ -111,3 +120,4 @@ Hofmann, H. (1994), **Statlog (German Credit Data)**, UCI Machine Learning Repos
 ## Further work (not yet implemented)
 
 Uncertainty intervals for subgroup performance; larger SHAP explanation sample; robust cross-seed or external validation; MLflow experiment tracking; production-grade inference API; drift monitoring. These are **future extensions**, not completed features.
+ 
