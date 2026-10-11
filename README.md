@@ -14,6 +14,15 @@
 ### Explainable AI — SHAP Feature Importance
 
 ![SHAP Global Importance](reports/shap_global.png)
+
+**Interpretation:** Global feature importance is measured
+using the mean absolute SHAP value across 30 sampled
+validation observations. Larger values indicate a
+stronger average contribution to model predictions,
+without indicating whether a variable increases or
+decreases predicted risk. SHAP explanations describe
+model behavior, not causal relationships.
+
 ## Business question
 
 Can we distinguish historical *bad credit risk* from *good credit risk*, estimate probabilities responsibly, and explain the model's predictions? We compare a statistical baseline (logistic regression) against a Random Forest, each probability-calibrated using training-only cross-validation, then select a model and a decision threshold **using validation data only**.

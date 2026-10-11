@@ -87,8 +87,17 @@ def main(n_explain=30, n_background=20):
     reports.mkdir(exist_ok=True)
     plt.figure()
     shap.plots.bar(explanation, max_display=12, show=False)
+
+    # Supprimer les signes + des importances absolues SHAP
+    for ax in plt.gcf().axes:
+        for texte in ax.texts:
+            valeur = texte.get_text()
+            if valeur.startswith("+"):
+                texte.set_text(valeur[1:])
+
     plt.savefig(reports / "shap_global.png", dpi=160, bbox_inches="tight")
     plt.close("all")
+
     plt.figure()
     shap.plots.waterfall(explanation[0], max_display=12, show=False)
     plt.savefig(reports / "shap_individuel.png", dpi=160, bbox_inches="tight")
