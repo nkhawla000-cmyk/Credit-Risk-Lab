@@ -22,3 +22,7 @@ reports/calibration_table.csv
 
 # OS and temporary
 *.log
+# Documents hors Credit Risk Lab
+docs/CHOIX_PROJETS.md
+docs/PROJET_2_PREVISION.md
+
