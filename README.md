@@ -1,7 +1,19 @@
 # Credit Risk Lab — Explainable Credit Risk Scoring (Educational Project)
 
 > **Status:** reproducible learning prototype; **not** approved for real lending or credit decisions. Based on historical German Credit data (1994), not a contemporary Moroccan or international banking sample.
+## Project Visualizations
 
+### ROC Curve — Independent Test Set
+
+![ROC Curve](reports/roc_test.png)
+
+### Probability Calibration
+
+![Calibration Curve](reports/calibration_test.png)
+
+### Explainable AI — SHAP Feature Importance
+
+![SHAP Global Importance](reports/shap_global.png)
 ## Business question
 
 Can we distinguish historical *bad credit risk* from *good credit risk*, estimate probabilities responsibly, and explain the model's predictions? We compare a statistical baseline (logistic regression) against a Random Forest, each probability-calibrated using training-only cross-validation, then select a model and a decision threshold **using validation data only**.
