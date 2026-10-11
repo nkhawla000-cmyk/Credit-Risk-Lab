@@ -1,0 +1,8 @@
+{
+  "n_explained": 30,
+  "model_selected": "Random_forest",
+  "background_size": 20,
+  "data_split": "validation uniquement pour les cas expliqués ; entraînement pour le fond",
+  "method": "SHAP permutation pour prédiction probabiliste du modèle calibré",
+  "limitations": "Importance moyennée sur un sous-échantillon, pas sur une population bancaire"
+}

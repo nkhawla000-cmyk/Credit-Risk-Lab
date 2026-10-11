@@ -1,0 +1,24 @@
+# Environment and local secrets
+.venv/
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+.idea/
+.vscode/
+
+# UCI input files, trained model and raw individual-level test predictions
+# Generate them on your computer by running the documented commands.
+data/*.data
+data/*.csv
+*.bak
+models/*.joblib
+reports/test_predictions.csv
+reports/calibration_table.csv
+
+# OS and temporary
+*.log

@@ -1,0 +1,19 @@
+{
+  "n_test": 200,
+  "positifs_reels": 60,
+  "modele_selectionne_sur_validation": "Random_forest",
+  "seuil_fixe_sur_validation": 0.26,
+  "roc_auc_test": 0.7779,
+  "roc_auc_ic95_bootstrap_stratifie": [
+    0.7111,
+    0.8426
+  ],
+  "score_brier": 0.1676,
+  "rappel_mauvais_risque": 0.7833,
+  "specificite_bon_risque": 0.65,
+  "tn": 91,
+  "fp": 49,
+  "fn": 13,
+  "tp": 47,
+  "remarque": "Evaluation retrospective d'un prototype pedagogique; ne pas optimiser le modele sur le test."
+}

@@ -1,0 +1,62 @@
+{
+  "dataset": "UCI Statlog German Credit (1994), 1000 exemples historiques",
+  "data_sha256": "a6c4f26983a0eade0222308496d976a5c95d250b671dd4779f0996bfbb884d17",
+  "random_state": 42,
+  "n_train": 600,
+  "n_validation": 200,
+  "n_test": 200,
+  "cout_fn": 5.0,
+  "cout_fp": 1.0,
+  "sensibles_exclus": [
+    "personal_status_sex",
+    "foreign_worker",
+    "age_years"
+  ],
+  "candidats_validation": {
+    "Regression_logistique": {
+      "seuil_validation": 0.21,
+      "validation": {
+        "n": 200,
+        "roc_auc": 0.8012,
+        "pr_auc": 0.6479,
+        "brier": 0.1628,
+        "erreur_cout_total": 89.0,
+        "erreur_cout_par_dossier": 0.445,
+        "tn": 66,
+        "fp": 74,
+        "fn": 3,
+        "tp": 57
+      }
+    },
+    "Random_forest": {
+      "seuil_validation": 0.26,
+      "validation": {
+        "n": 200,
+        "roc_auc": 0.8132,
+        "pr_auc": 0.6436,
+        "brier": 0.1572,
+        "erreur_cout_total": 85.0,
+        "erreur_cout_par_dossier": 0.425,
+        "tn": 85,
+        "fp": 55,
+        "fn": 6,
+        "tp": 54
+      }
+    }
+  },
+  "modele_retenu": "Random_forest",
+  "seuil_retenu_sur_validation": 0.26,
+  "test_final": {
+    "n": 200,
+    "roc_auc": 0.7779,
+    "pr_auc": 0.6091,
+    "brier": 0.1676,
+    "erreur_cout_total": 114.0,
+    "erreur_cout_par_dossier": 0.57,
+    "tn": 91,
+    "fp": 49,
+    "fn": 13,
+    "tp": 47
+  },
+  "statut": "prototype pedagogique, non utilisable pour decisions bancaires"
+}

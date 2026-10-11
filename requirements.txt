@@ -1,0 +1,12 @@
+# Python 3.11-3.13; versions exactes : exporter `python -m pip freeze`
+# après installation si vous avez besoin d'un verrou reproductible.
+numpy>=1.26
+pandas>=2.1
+scikit-learn>=1.4
+joblib>=1.3
+streamlit>=1.35
+pytest>=7.4
+altair>=5.0
+scipy>=1.11
+matplotlib>=3.8
+shap>=0.46
